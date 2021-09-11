@@ -6,9 +6,8 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import studiosol.acerteonumero.util.Constants.Companion.BASE_URL
 import java.util.concurrent.TimeUnit
-
-const val BASE_URL = "https://us-central1-ss-devops.cloudfunctions.net"
 
 fun client() =
     OkHttpClient.Builder()
@@ -28,5 +27,5 @@ fun retrofit() : Retrofit =
         .addConverterFactory(GsonConverterFactory.create(gson()))
         .build()
 
-fun service() : ApiService =
+fun services() : ApiService =
     retrofit().create(ApiService::class.java)
