@@ -1,4 +1,4 @@
-package studiosol.acerteonumero.ui.viewModels
+package studiosol.acerteonumero.viewModels
 
 import androidx.lifecycle.ViewModel
 

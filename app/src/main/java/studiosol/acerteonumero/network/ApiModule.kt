@@ -8,7 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-const val BASE_URL = "https://us-central1-ss-devops.cloudfunctions.net/"
+const val BASE_URL = "https://us-central1-ss-devops.cloudfunctions.net"
 
 fun client() =
     OkHttpClient.Builder()

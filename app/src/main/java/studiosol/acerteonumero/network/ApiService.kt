@@ -1,5 +1,8 @@
 package studiosol.acerteonumero.network
 
-interface ApiService {
+import retrofit2.http.GET
 
+interface ApiService {
+    @GET("/rand?min=1&max=300")
+    suspend fun getRandomNumber()
 }
