@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Acerte o Número</string>
+
+    <!-- TextView de dicas e resultado da tentativa -->
+    <string name="right_answer">Acertou!</string>
+    <string name="tip_higher">É maior</string>
+    <string name="tip_lower">É Menor</string>
+
+    <string name="request_error">Erro</string>
+
+    <!-- Conteúdo dos botões dispostos na tela -->
+    <string name="new_game">Nova Partida</string>
+    <string name="send">Enviar</string>
+</resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activitys.GameActivity">
+
+    <TextView
+        android:id="@+id/tv_try_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/right_answer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_number_segments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_try_result"
+        app:layout_constraintStart_toStartOf="@+id/tv_try_result"
+        app:layout_constraintTop_toBottomOf="@+id/tv_try_result"
+        tools:text="TextView"/>
+
+    <Button
+        android:id="@+id/bt_new_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/new_game"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/tv_number_segments"
+        app:layout_constraintStart_toStartOf="@+id/tv_number_segments"
+        app:layout_constraintTop_toBottomOf="@+id/tv_number_segments" />
+
+    <Button
+        android:id="@+id/bt_send_try"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/send"
+        app:layout_constraintBottom_toBottomOf="@+id/et_number_try"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/et_number_try"
+        app:layout_constraintTop_toTopOf="@+id/et_number_try" />
+
+    <EditText
+        android:id="@+id/et_number_try"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="3"
+        android:singleLine="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="Autofill,LabelFor" />
+</androidx.constraintlayout.widget.ConstraintLayout>
