@@ -1,9 +1,8 @@
 package studiosol.acerteonumero.type
 
 enum class GameStatus(val value: Int) {
-    Normal(0),
-    Higher(1),
-    Lower(2),
-    Right(3),
-    Error(4);
+    Higher(0),
+    Lower(1),
+    Right(2),
+    Error(3);
 }

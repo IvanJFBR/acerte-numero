@@ -19,17 +19,17 @@ class GameViewModel(private val repository: RandomNumberRepository) : ViewModel(
     }
 
     val randomNumber : MutableLiveData<RandomNumber> = MutableLiveData()
-    var gameStatus : GameStatus = GameStatus.Normal
+    var gameStatus : MutableLiveData<GameStatus> = MutableLiveData()
 
     fun getRandomNumber() {
         viewModelScope.launch {
-            randomNumber.value = repository.getRandomNumber()
+            randomNumber.postValue(repository.getRandomNumber())
         }
     }
 
     fun playGame(number: Int) {
         randomNumber.value?.let {
-            gameStatus = when {
+            gameStatus.value = when {
                 number > it.number -> GameStatus.Lower
                 number < it.number -> GameStatus.Higher
                 else -> GameStatus.Right
