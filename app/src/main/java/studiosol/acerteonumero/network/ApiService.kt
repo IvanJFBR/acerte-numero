@@ -1,6 +1,5 @@
 package studiosol.acerteonumero.network
 
-import retrofit2.Call
 import retrofit2.http.GET
 import studiosol.acerteonumero.model.RandomNumber
 
