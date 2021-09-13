@@ -66,9 +66,15 @@ class NumberDisplayFragment : Fragment() {
         viewModel.currentValue.observe(viewLifecycleOwner, Observer {
             setDisplayNumber(it.toString())
         })
+
+        viewModel.randomNumber.observe(viewLifecycleOwner, Observer {
+            resetDisplay()
+        })
     }
 
     private fun resetDisplay() {
+        removeAllFragments()
+
         val fragmentManager: FragmentManager = childFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         val fragment = NumberFragment()
@@ -80,9 +86,7 @@ class NumberDisplayFragment : Fragment() {
     private fun setDisplayNumber(value: String) {
         val numbers = value.map { it.toString().toInt() }
 
-        for (fragment in fragmentToRemove) {
-            childFragmentManager.beginTransaction().remove(fragment).commit()
-        }
+        removeAllFragments()
 
         for (number: Int in numbers) {
             val fragmentManager: FragmentManager = childFragmentManager
@@ -94,6 +98,12 @@ class NumberDisplayFragment : Fragment() {
 
             fragmentToRemove.add(fragment)
             fragmentTransaction.add(binding.displayContainer.id, fragment).commit()
+        }
+    }
+
+    private fun removeAllFragments() {
+        for (fragment in fragmentToRemove) {
+            childFragmentManager.beginTransaction().remove(fragment).commit()
         }
     }
 }
