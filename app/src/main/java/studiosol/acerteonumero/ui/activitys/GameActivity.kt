@@ -34,17 +34,18 @@ class GameActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_game)
 
-        setListeneres()
+        setListeners()
         setObservers()
     }
 
-    private fun setListeneres() {
+    private fun setListeners() {
         binding.apply {
             btSendTry.setOnClickListener {
-                val inputedText = etNumberTry.text.toString()
-                viewModel.playGame(parseInt(inputedText))
-                getGameStatus(viewModel.gameStatus.value)
-                binding.tvNumberSegments.text = inputedText
+                val inputedText: String = etNumberTry.text.toString()
+                if (inputedText.isNotEmpty()) {
+                    viewModel.playGame(parseInt(inputedText))
+                    binding.tvNumberSegments.text = inputedText
+                }
             }
 
             btNewGame.setOnClickListener {
@@ -55,11 +56,7 @@ class GameActivity : AppCompatActivity() {
 
     private fun newGame() {
         viewModel.getRandomNumber()
-        binding.apply {
-            tvNumberSegments.text = ""
-            tvTryResult.text = ""
-            etNumberTry.text.clear()
-        }
+        resetGame()
     }
 
     private fun setObservers() {
@@ -68,11 +65,15 @@ class GameActivity : AppCompatActivity() {
         })
 
         viewModel.gameStatus.observe(this, Observer {
-            binding.btNewGame.visibility = if (it == GameStatus.Right || it == GameStatus.Error){
-                View.VISIBLE
-            } else {
-                View.GONE
+            if (it == GameStatus.Right || it == GameStatus.Error){
+                disableGame()
             }
+
+            getGameStatus(it)
+        })
+
+        viewModel.currentValue.observe(this, Observer {
+            binding.tvNumberSegments.text = it.toString()
         })
     }
 
@@ -86,5 +87,31 @@ class GameActivity : AppCompatActivity() {
         }
 
         binding.tvTryResult.text = status
+    }
+
+    private fun resetGame() {
+        binding.apply {
+            tvNumberSegments.text = ""
+            tvTryResult.text = ""
+            etNumberTry.text.clear()
+        }
+
+        enableGame()
+    }
+
+    private fun enableGame() {
+        binding.apply {
+            btNewGame.visibility = View.GONE
+            etNumberTry.isEnabled = true
+            btSendTry.isEnabled = true
+        }
+    }
+
+    private fun disableGame() {
+        binding.apply {
+            btNewGame.visibility = View.VISIBLE
+            btSendTry.isEnabled = false
+            etNumberTry.isEnabled = false
+        }
     }
 }
