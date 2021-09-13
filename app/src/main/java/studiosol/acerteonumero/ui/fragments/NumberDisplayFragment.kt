@@ -48,6 +48,7 @@ class NumberDisplayFragment : Fragment() {
 
         createViewModel()
         setObservers()
+        resetDisplay()
     }
 
     override fun onResume() {
@@ -65,6 +66,15 @@ class NumberDisplayFragment : Fragment() {
         viewModel.currentValue.observe(viewLifecycleOwner, Observer {
             setDisplayNumber(it.toString())
         })
+    }
+
+    private fun resetDisplay() {
+        val fragmentManager: FragmentManager = childFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        val fragment = NumberFragment()
+
+        fragmentToRemove.add(fragment)
+        fragmentTransaction.add(binding.displayContainer.id, fragment).commit()
     }
 
     private fun setDisplayNumber(value: String) {

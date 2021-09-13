@@ -11,6 +11,4 @@
     <!-- Conteúdo dos botões dispostos na tela -->
     <string name="new_game">Nova Partida</string>
     <string name="send">Enviar</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

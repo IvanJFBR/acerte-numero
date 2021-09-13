@@ -1,10 +1,16 @@
 package studiosol.acerteonumero.ui.activitys
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doBeforeTextChanged
+import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
@@ -14,6 +20,7 @@ import studiosol.acerteonumero.databinding.ActivityGameBinding
 import studiosol.acerteonumero.repository.RandomNumberRepository
 import studiosol.acerteonumero.type.GameStatus
 import studiosol.acerteonumero.ui.fragments.NumberDisplayFragment
+import studiosol.acerteonumero.util.Constants.Companion.CARACTER_LIMIT
 import studiosol.acerteonumero.viewModel.GameViewModel
 import java.lang.Integer.parseInt
 
@@ -21,6 +28,8 @@ import java.lang.Integer.parseInt
 class GameActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGameBinding
     private lateinit var viewModel: GameViewModel
+
+    private val fragmentToReset: Fragment = Fragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,28 +45,31 @@ class GameActivity : AppCompatActivity() {
 
         setListeners()
         setObservers()
-        descriptionFragment()
+        numberDisplayFragment()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setListeners() {
         binding.apply {
             btSendTry.setOnClickListener {
                 val inputedText: String = etNumberTry.text.toString()
                 if (inputedText.isNotEmpty()) {
                     viewModel.playGame(parseInt(inputedText))
-                    binding.tvNumberSegments.text = inputedText
+                    //binding.tvNumberSegments.text = inputedText
+
+                    hideKeyboard()
                 }
             }
 
             btNewGame.setOnClickListener {
                 newGame()
             }
-        }
-    }
 
-    private fun newGame() {
-        viewModel.getRandomNumber()
-        resetGame()
+            etNumberTry.doOnTextChanged { text, start, count, after ->
+                val length = text?.length
+                tvInputCount.text = "$length/$CARACTER_LIMIT"
+            }
+        }
     }
 
     private fun setObservers() {
@@ -73,12 +85,12 @@ class GameActivity : AppCompatActivity() {
             getGameStatus(it)
         })
 
-        viewModel.currentValue.observe(this, Observer {
-            binding.tvNumberSegments.text = it.toString()
-        })
+//        viewModel.currentValue.observe(this, Observer {
+//            binding.tvNumberSegments.text = it.toString()
+//        })
     }
 
-    private fun descriptionFragment() {
+    private fun numberDisplayFragment() {
         val fragmentManager: FragmentManager = supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.add(binding.containerFragments.id, NumberDisplayFragment()).commit()
@@ -96,9 +108,14 @@ class GameActivity : AppCompatActivity() {
         binding.tvTryResult.text = status
     }
 
+    private fun newGame() {
+        viewModel.getRandomNumber()
+        resetGame()
+    }
+
     private fun resetGame() {
         binding.apply {
-            tvNumberSegments.text = ""
+            //tvNumberSegments.text = ""
             tvTryResult.text = ""
             etNumberTry.text.clear()
         }
@@ -119,6 +136,15 @@ class GameActivity : AppCompatActivity() {
             btNewGame.visibility = View.VISIBLE
             btSendTry.isEnabled = false
             etNumberTry.isEnabled = false
+        }
+    }
+
+    private fun hideKeyboard() {
+        binding.etNumberTry.let {
+            if (it.hasFocus()) {
+                val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(it.windowToken, 0)
+            }
         }
     }
 }

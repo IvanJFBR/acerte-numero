@@ -16,7 +16,6 @@ import studiosol.acerteonumero.databinding.FragmentNumberBindingImpl
 import studiosol.acerteonumero.databinding.FragmentNumberDisplayBinding
 import studiosol.acerteonumero.viewModel.GameViewModel
 
-// TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "number"
 
@@ -51,6 +50,7 @@ class NumberFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
+        setNumber(null)
         setObservers()
     }
 
@@ -79,10 +79,9 @@ class NumberFragment : Fragment() {
         })
     }
 
-    private fun setNumber(number: Int) {
+    private fun setNumber(number: Int?) {
         when(number) {
-            0 -> {
-                binding.apply {
+            0 -> binding.apply {
                     segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentUpperLeft.background = setBackground(R.drawable.segment_display_colorfull)
@@ -91,9 +90,7 @@ class NumberFragment : Fragment() {
                     segmentBottomLeft.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
                 }
-            }
-            1 -> {
-                binding.apply {
+            1 -> binding.apply {
                     segmentUpper.background = setBackground(R.drawable.segment_display_gray)
                     segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentUpperLeft.background = setBackground(R.drawable.segment_display_gray)
@@ -102,9 +99,7 @@ class NumberFragment : Fragment() {
                     segmentBottomLeft.background = setBackground(R.drawable.segment_display_gray)
                     segmentBottom.background = setBackground(R.drawable.segment_display_gray)
                 }
-            }
-            2 -> {
-                binding.apply {
+            2 -> binding.apply {
                     segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentUpperLeft.background = setBackground(R.drawable.segment_display_gray)
@@ -113,9 +108,7 @@ class NumberFragment : Fragment() {
                     segmentBottomLeft.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
                 }
-            }
-            3 -> {
-                binding.apply {
+            3 -> binding.apply {
                     segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentUpperLeft.background = setBackground(R.drawable.segment_display_gray)
@@ -124,9 +117,7 @@ class NumberFragment : Fragment() {
                     segmentBottomLeft.background = setBackground(R.drawable.segment_display_gray)
                     segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
                 }
-            }
-            4 -> {
-                binding.apply {
+            4 -> binding.apply {
                     segmentUpper.background = setBackground(R.drawable.segment_display_gray)
                     segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentUpperLeft.background = setBackground(R.drawable.segment_display_colorfull)
@@ -135,9 +126,7 @@ class NumberFragment : Fragment() {
                     segmentBottomLeft.background = setBackground(R.drawable.segment_display_gray)
                     segmentBottom.background = setBackground(R.drawable.segment_display_gray)
                 }
-            }
-            5 -> {
-                binding.apply {
+            5 -> binding.apply {
                     segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentUpperRight.background = setBackground(R.drawable.segment_display_gray)
                     segmentUpperLeft.background = setBackground(R.drawable.segment_display_colorfull)
@@ -146,9 +135,7 @@ class NumberFragment : Fragment() {
                     segmentBottomLeft.background = setBackground(R.drawable.segment_display_gray)
                     segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
                 }
-            }
-            6 -> {
-                binding.apply {
+            6 -> binding.apply {
                     segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentUpperRight.background = setBackground(R.drawable.segment_display_gray)
                     segmentUpperLeft.background = setBackground(R.drawable.segment_display_colorfull)
@@ -157,9 +144,7 @@ class NumberFragment : Fragment() {
                     segmentBottomLeft.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
                 }
-            }
-            7 -> {
-                binding.apply {
+            7 -> binding.apply {
                     segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentUpperLeft.background = setBackground(R.drawable.segment_display_gray)
@@ -168,9 +153,7 @@ class NumberFragment : Fragment() {
                     segmentBottomLeft.background = setBackground(R.drawable.segment_display_gray)
                     segmentBottom.background = setBackground(R.drawable.segment_display_gray)
                 }
-            }
-            8 -> {
-                binding.apply {
+            8 -> binding.apply {
                     segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentUpperLeft.background = setBackground(R.drawable.segment_display_colorfull)
@@ -179,17 +162,23 @@ class NumberFragment : Fragment() {
                     segmentBottomLeft.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
                 }
-            }
-            9 -> {
-                binding.apply {
+            9 -> binding.apply {
                     segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentUpperLeft.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentMiddle.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
                     segmentBottomLeft.background = setBackground(R.drawable.segment_display_gray)
-                    segmentBottom.background = setBackground(R.drawable.segment_display_gray)
+                    segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
                 }
+            else -> binding.apply {
+                segmentUpper.background = setBackground(R.drawable.segment_display_gray)
+                segmentUpperRight.background = setBackground(R.drawable.segment_display_gray)
+                segmentUpperLeft.background = setBackground(R.drawable.segment_display_gray)
+                segmentMiddle.background = setBackground(R.drawable.segment_display_gray)
+                segmentBottomRight.background = setBackground(R.drawable.segment_display_gray)
+                segmentBottomLeft.background = setBackground(R.drawable.segment_display_gray)
+                segmentBottom.background = setBackground(R.drawable.segment_display_gray)
             }
         }
     }
