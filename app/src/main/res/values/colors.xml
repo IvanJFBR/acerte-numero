@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    //Custom colors
+    <color name="primary_dark">#af164a</color>
+    <color name="primary_light">#ea1e63</color>
+    <color name="standart_display">#e81e62</color>
+    <color name="input_line">#dc5d89</color>
+    <color name="input_cursor">#af164a</color>
 </resources>
