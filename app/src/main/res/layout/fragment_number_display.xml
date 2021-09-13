@@ -3,11 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/display_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         tools:context=".ui.fragments.NumberDisplayFragment">
+
+        <!--
 
         <include
             android:id="@+id/first_number"
@@ -36,7 +39,7 @@
             android:layout_marginStart="16dp"
             app:layout_constraintBottom_toBottomOf="@+id/second_number"
             app:layout_constraintStart_toEndOf="@+id/second_number"
-            app:layout_constraintTop_toTopOf="@+id/second_number" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toTopOf="@+id/second_number" /> -->
+    </LinearLayout>
 
 </layout>

@@ -1,22 +1,22 @@
 package studiosol.acerteonumero.ui.activitys
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.AttributeSet
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import studiosol.acerteonumero.R
 import studiosol.acerteonumero.databinding.ActivityGameBinding
 import studiosol.acerteonumero.repository.RandomNumberRepository
 import studiosol.acerteonumero.type.GameStatus
+import studiosol.acerteonumero.ui.fragments.NumberDisplayFragment
 import studiosol.acerteonumero.viewModel.GameViewModel
 import java.lang.Integer.parseInt
+
 
 class GameActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGameBinding
@@ -36,6 +36,7 @@ class GameActivity : AppCompatActivity() {
 
         setListeners()
         setObservers()
+        descriptionFragment()
     }
 
     private fun setListeners() {
@@ -75,6 +76,12 @@ class GameActivity : AppCompatActivity() {
         viewModel.currentValue.observe(this, Observer {
             binding.tvNumberSegments.text = it.toString()
         })
+    }
+
+    private fun descriptionFragment() {
+        val fragmentManager: FragmentManager = supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.add(binding.containerFragments.id, NumberDisplayFragment()).commit()
     }
 
     private fun getGameStatus(gameStatus: GameStatus?) {

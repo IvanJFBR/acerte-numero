@@ -1,18 +1,15 @@
 package studiosol.acerteonumero.ui.fragments
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import studiosol.acerteonumero.R
-import studiosol.acerteonumero.databinding.ActivityGameBinding
 import studiosol.acerteonumero.databinding.FragmentNumberDisplayBinding
-import studiosol.acerteonumero.databinding.NumberDisplayLayoutBinding
 import studiosol.acerteonumero.viewModel.GameViewModel
 
 /**
@@ -21,8 +18,15 @@ import studiosol.acerteonumero.viewModel.GameViewModel
  * create an instance of this fragment.
  */
 class NumberDisplayFragment : Fragment() {
+
+    companion object {
+        fun newInstance() = NumberDisplayFragment
+    }
+
     private lateinit var binding: FragmentNumberDisplayBinding
     private lateinit var viewModel: GameViewModel
+
+    private val fragmentToRemove: ArrayList<Fragment> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,42 +63,27 @@ class NumberDisplayFragment : Fragment() {
 
     private fun setObservers() {
         viewModel.currentValue.observe(viewLifecycleOwner, Observer {
-            setDisplayNumber("101")
+            setDisplayNumber(it.toString())
         })
     }
 
     private fun setDisplayNumber(value: String) {
         val numbers = value.map { it.toString().toInt() }
 
-        for (pos: Int in numbers) {
-            when(numbers[pos]) {
-                0 -> {
-                    (binding.displayContainer.getChildAt(pos) as NumberDisplayLayoutBinding).apply {
-                        segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
-                        segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
-                        segmentUpperLeft.background = setBackground(R.drawable.segment_display_colorfull)
-                        segmentMiddle.background = setBackground(R.drawable.segment_display_gray)
-                        segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
-                        segmentBottomLeft.background = setBackground(R.drawable.segment_display_colorfull)
-                        segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
-                    }
-                }
-                1 -> {
-                    (binding.displayContainer.getChildAt(pos) as NumberDisplayLayoutBinding).apply {
-                        segmentUpper.background = setBackground(R.drawable.segment_display_gray)
-                        segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
-                        segmentUpperLeft.background = setBackground(R.drawable.segment_display_gray)
-                        segmentMiddle.background = setBackground(R.drawable.segment_display_gray)
-                        segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
-                        segmentBottomLeft.background = setBackground(R.drawable.segment_display_gray)
-                        segmentBottom.background = setBackground(R.drawable.segment_display_gray)
-                    }
-                }
-            }
+        for (fragment in fragmentToRemove) {
+            childFragmentManager.beginTransaction().remove(fragment).commit()
         }
-    }
 
-    private fun setBackground(drawableResource: Int) : Drawable? {
-        return ContextCompat.getDrawable(requireContext(), drawableResource)
+        for (number: Int in numbers) {
+            val fragmentManager: FragmentManager = childFragmentManager
+            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+            val fragment = NumberFragment()
+            val args = Bundle()
+            args.putInt("number", number)
+            fragment.arguments = args
+
+            fragmentToRemove.add(fragment)
+            fragmentTransaction.add(binding.displayContainer.id, fragment).commit()
+        }
     }
 }
