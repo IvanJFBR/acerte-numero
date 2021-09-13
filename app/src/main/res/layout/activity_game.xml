@@ -22,21 +22,32 @@
                 android:id="@+id/tv_try_result"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_marginTop="16dp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/tv_number_segments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="32sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 tools:text="TextView" />
+
+            <include
+                android:id="@+id/display"
+                layout="@layout/fragment_number_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/bt_new_game"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:text="@string/new_game"
                 android:textAlignment="center"

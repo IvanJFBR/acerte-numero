@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/display_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/segment_upper"
+            android:layout_width="50dp"
+            android:layout_height="10dp"
+            android:background="@drawable/segment_display_colorfull"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:id="@+id/segment_upper_right"
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            android:background="@drawable/segment_display_colorfull"
+            app:layout_constraintStart_toEndOf="@+id/segment_upper"
+            app:layout_constraintTop_toBottomOf="@+id/segment_upper"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:id="@+id/segment_upper_left"
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            android:background="@drawable/segment_display_colorfull"
+            app:layout_constraintEnd_toStartOf="@+id/segment_upper"
+            app:layout_constraintTop_toBottomOf="@+id/segment_upper"
+            tools:ignore="ContentDescription"/>
+
+        <View
+            android:id="@+id/segment_middle"
+            android:layout_width="50dp"
+            android:layout_height="10dp"
+            android:background="@drawable/segment_display_colorfull"
+            app:layout_constraintEnd_toStartOf="@+id/segment_upper_right"
+            app:layout_constraintStart_toEndOf="@+id/segment_upper_left"
+            app:layout_constraintTop_toBottomOf="@+id/segment_upper_left"
+            tools:ignore="ContentDescription"/>
+
+        <View
+            android:id="@+id/segment_bottom_left"
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            android:background="@drawable/segment_display_colorfull"
+            app:layout_constraintEnd_toStartOf="@+id/segment_middle"
+            app:layout_constraintTop_toBottomOf="@+id/segment_middle"
+            tools:ignore="ContentDescription"/>
+
+        <View
+            android:id="@+id/segment_bottom_right"
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            android:background="@drawable/segment_display_colorfull"
+            app:layout_constraintStart_toEndOf="@+id/segment_middle"
+            app:layout_constraintTop_toBottomOf="@+id/segment_middle"
+            tools:ignore="ContentDescription"/>
+
+        <View
+            android:id="@+id/segment_bottom"
+            android:layout_width="50dp"
+            android:layout_height="10dp"
+            android:background="@drawable/segment_display_colorfull"
+            app:layout_constraintStart_toEndOf="@+id/segment_bottom_left"
+            app:layout_constraintTop_toBottomOf="@+id/segment_bottom_left"
+            tools:ignore="ContentDescription"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
