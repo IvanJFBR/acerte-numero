@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/font"
+        android:icon="@drawable/ic_font_menu"
+        app:showAsAction="always"
+        android:title="@string/font" />
+    <item
+        android:id="@+id/pallete"
+        android:icon="@drawable/ic_pallete_menu"
+        app:showAsAction="ifRoom"
+        android:title="@string/colours" />
+</menu>

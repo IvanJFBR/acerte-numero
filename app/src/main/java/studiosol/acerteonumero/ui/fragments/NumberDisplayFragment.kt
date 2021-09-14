@@ -70,6 +70,16 @@ class NumberDisplayFragment : Fragment() {
         viewModel.randomNumber.observe(viewLifecycleOwner, Observer {
             resetDisplay()
         })
+
+        viewModel.apply {
+            fontSize1.observe(viewLifecycleOwner, Observer {
+                resetDisplay()
+            })
+
+            fontSize2.observe(viewLifecycleOwner, Observer {
+                resetDisplay()
+            })
+        }
     }
 
     private fun resetDisplay() {

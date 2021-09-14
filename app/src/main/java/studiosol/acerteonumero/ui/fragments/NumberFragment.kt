@@ -27,6 +27,7 @@ private const val ARG_PARAM1 = "number"
 class NumberFragment : Fragment() {
 
     private lateinit var binding: FragmentNumberBinding
+    private lateinit var viewModel: GameViewModel
 
     private var number: MutableLiveData<Int> = MutableLiveData()
 
@@ -45,6 +46,12 @@ class NumberFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        createViewModel()
     }
 
     override fun onResume() {
@@ -73,10 +80,25 @@ class NumberFragment : Fragment() {
             }
     }
 
+    private fun createViewModel() {
+        this.viewModel = ViewModelProvider(requireActivity()).get(GameViewModel::class.java)
+        binding.viewModel = viewModel
+    }
+
     private fun setObservers() {
         number.observe(viewLifecycleOwner, Observer {
             setNumber(it)
         })
+
+        viewModel.apply {
+            fontSize1.observe(viewLifecycleOwner, Observer {
+                binding.size1 = resources.getDimension(it)
+            })
+
+            fontSize2.observe(viewLifecycleOwner, Observer {
+                binding.size2 = resources.getDimension(it)
+            })
+        }
     }
 
     private fun setNumber(number: Int?) {

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tamanhos disponíveis para as fontes -->
+    <dimen name="standart_size_first">50dp</dimen>
+    <dimen name="standart_size_second">10dp</dimen>
+    <dimen name="option1_size_first">30dp</dimen>
+    <dimen name="option1_size_second">6dp</dimen>
+    <dimen name="option2_size_first">40dp</dimen>
+    <dimen name="option2_size_second">8dp</dimen>
+    <dimen name="option3_size_first">60dp</dimen>
+    <dimen name="option3_size_second">12dp</dimen>
+    <dimen name="option4_size_first">60dp</dimen>
+    <dimen name="option4_size_second">14dp</dimen>
+</resources>

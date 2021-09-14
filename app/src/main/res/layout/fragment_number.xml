@@ -3,6 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="studiosol.acerteonumero.viewModel.GameViewModel" />
+
+        <variable
+            name="size1"
+            type="Float" />
+
+        <variable
+            name="size2"
+            type="Float" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/display_container"
         android:layout_width="wrap_content"
@@ -12,8 +27,8 @@
 
         <View
             android:id="@+id/segment_upper"
-            android:layout_width="50dp"
-            android:layout_height="10dp"
+            android:layout_width="@{size1, default=@dimen/standart_size_first}"
+            android:layout_height="@{size2, default=@dimen/standart_size_second}"
             android:background="@drawable/segment_display_colorfull"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -22,8 +37,8 @@
 
         <View
             android:id="@+id/segment_upper_right"
-            android:layout_width="10dp"
-            android:layout_height="50dp"
+            android:layout_width="@{size2, default=@dimen/standart_size_second}"
+            android:layout_height="@{size1, default=@dimen/standart_size_first}"
             android:background="@drawable/segment_display_colorfull"
             app:layout_constraintStart_toEndOf="@+id/segment_upper"
             app:layout_constraintTop_toBottomOf="@+id/segment_upper"
@@ -31,8 +46,8 @@
 
         <View
             android:id="@+id/segment_upper_left"
-            android:layout_width="10dp"
-            android:layout_height="50dp"
+            android:layout_width="@{size2, default=@dimen/standart_size_second}"
+            android:layout_height="@{size1, default=@dimen/standart_size_first}"
             android:background="@drawable/segment_display_colorfull"
             app:layout_constraintEnd_toStartOf="@+id/segment_upper"
             app:layout_constraintTop_toBottomOf="@+id/segment_upper"
@@ -40,8 +55,8 @@
 
         <View
             android:id="@+id/segment_middle"
-            android:layout_width="50dp"
-            android:layout_height="10dp"
+            android:layout_width="@{size1, default=@dimen/standart_size_first}"
+            android:layout_height="@{size2, default=@dimen/standart_size_second}"
             android:background="@drawable/segment_display_colorfull"
             app:layout_constraintEnd_toStartOf="@+id/segment_upper_right"
             app:layout_constraintStart_toEndOf="@+id/segment_upper_left"
@@ -50,8 +65,8 @@
 
         <View
             android:id="@+id/segment_bottom_left"
-            android:layout_width="10dp"
-            android:layout_height="50dp"
+            android:layout_width="@{size2, default=@dimen/standart_size_second}"
+            android:layout_height="@{size1, default=@dimen/standart_size_first}"
             android:background="@drawable/segment_display_colorfull"
             app:layout_constraintEnd_toStartOf="@+id/segment_middle"
             app:layout_constraintTop_toBottomOf="@+id/segment_middle"
@@ -59,8 +74,8 @@
 
         <View
             android:id="@+id/segment_bottom_right"
-            android:layout_width="10dp"
-            android:layout_height="50dp"
+            android:layout_width="@{size2, default=@dimen/standart_size_second}"
+            android:layout_height="@{size1, default=@dimen/standart_size_first}"
             android:background="@drawable/segment_display_colorfull"
             app:layout_constraintStart_toEndOf="@+id/segment_middle"
             app:layout_constraintTop_toBottomOf="@+id/segment_middle"
@@ -68,8 +83,8 @@
 
         <View
             android:id="@+id/segment_bottom"
-            android:layout_width="50dp"
-            android:layout_height="10dp"
+            android:layout_width="@{size1, default=@dimen/standart_size_first}"
+            android:layout_height="@{size2, default=@dimen/standart_size_second}"
             android:background="@drawable/segment_display_colorfull"
             app:layout_constraintStart_toEndOf="@+id/segment_bottom_left"
             app:layout_constraintTop_toBottomOf="@+id/segment_bottom_left"

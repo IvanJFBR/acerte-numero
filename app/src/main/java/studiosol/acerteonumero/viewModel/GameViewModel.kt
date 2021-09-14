@@ -10,8 +10,10 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import studiosol.acerteonumero.R
 import studiosol.acerteonumero.model.RandomNumber
 import studiosol.acerteonumero.repository.RandomNumberRepository
+import studiosol.acerteonumero.type.FontSizes
 import studiosol.acerteonumero.type.GameStatus
 
 class GameViewModel(val repository: RandomNumberRepository) : ViewModel() {
@@ -26,6 +28,9 @@ class GameViewModel(val repository: RandomNumberRepository) : ViewModel() {
     var gameStatus : MutableLiveData<GameStatus> = MutableLiveData()
 
     var currentValue : MutableLiveData<Int> = MutableLiveData()
+
+    var fontSize1 : MutableLiveData<Int> = MutableLiveData()
+    var fontSize2 : MutableLiveData<Int> = MutableLiveData()
 
     fun getRandomNumber() {
         viewModelScope.launch {

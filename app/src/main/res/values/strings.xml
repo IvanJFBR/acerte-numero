@@ -11,4 +11,10 @@
     <!-- Conteúdo dos botões dispostos na tela -->
     <string name="new_game">Nova Partida</string>
     <string name="send">Enviar</string>
+
+    <!-- Itens do Menu -->
+    <string name="font">Tamanho da Fonte</string>
+    <string name="colours">Cores</string>
+    <string name="confirm_dialog">Confirmar</string>
+
 </resources>
