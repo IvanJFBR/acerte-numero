@@ -1,4 +1,4 @@
-package studiosol.acerteonumero.model
+package studiosol.acerteonumero.network.model
 
 import com.google.gson.annotations.SerializedName
 

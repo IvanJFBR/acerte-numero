@@ -1,7 +1,5 @@
 package studiosol.acerteonumero.viewModel
 
-import android.content.Context
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -10,10 +8,8 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import studiosol.acerteonumero.R
-import studiosol.acerteonumero.model.RandomNumber
+import studiosol.acerteonumero.network.model.RandomNumber
 import studiosol.acerteonumero.repository.RandomNumberRepository
-import studiosol.acerteonumero.type.FontSizes
 import studiosol.acerteonumero.type.GameStatus
 
 class GameViewModel(val repository: RandomNumberRepository) : ViewModel() {
@@ -29,6 +25,9 @@ class GameViewModel(val repository: RandomNumberRepository) : ViewModel() {
 
     var currentValue: MutableLiveData<Int> = MutableLiveData()
 
+    /**
+     * Valores a serem atribuídos à largura ou altura de acordo com a orientação do segmento.
+     */
     var fontSize1: MutableLiveData<Int> = MutableLiveData()
     var fontSize2: MutableLiveData<Int> = MutableLiveData()
 
@@ -61,7 +60,7 @@ class GameViewModel(val repository: RandomNumberRepository) : ViewModel() {
             gameStatus.value = when {
                 number > it.number -> GameStatus.Lower
                 number < it.number -> GameStatus.Higher
-                else -> GameStatus.Right
+                else -> GameStatus.RightAnswer
             }
 
             currentValue.postValue(number)

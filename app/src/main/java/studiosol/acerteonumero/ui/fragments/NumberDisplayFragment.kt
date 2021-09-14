@@ -12,35 +12,21 @@ import androidx.lifecycle.ViewModelProvider
 import studiosol.acerteonumero.databinding.FragmentNumberDisplayBinding
 import studiosol.acerteonumero.viewModel.GameViewModel
 
-/**
- * A simple [Fragment] subclass.
- * Use the [NumberDisplayFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class NumberDisplayFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = NumberDisplayFragment
-    }
-
-    private lateinit var binding: FragmentNumberDisplayBinding
+    private lateinit var numberDisplayBinding: FragmentNumberDisplayBinding
     private lateinit var viewModel: GameViewModel
 
     private val fragmentToRemove: ArrayList<Fragment> = arrayListOf()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentNumberDisplayBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
+        numberDisplayBinding = FragmentNumberDisplayBinding.inflate(inflater, container, false)
+        numberDisplayBinding.lifecycleOwner = viewLifecycleOwner
 
-        return binding.root
+        return numberDisplayBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,7 +50,7 @@ class NumberDisplayFragment : Fragment() {
 
     private fun setObservers() {
         viewModel.currentValue.observe(viewLifecycleOwner, {
-            setDisplayNumber(it)
+            setDisplay(it)
         })
 
         viewModel.randomNumber.observe(viewLifecycleOwner, {
@@ -73,24 +59,19 @@ class NumberDisplayFragment : Fragment() {
 
         viewModel.apply {
             fontSize1.observe(viewLifecycleOwner, Observer {
-                viewModel.currentValue.value.let {
-                    if (it == null) {
-                        resetDisplay()
-                    } else {
-                        setDisplayNumber(it)
-                    }
-                }
+                updateDisplay()
             })
 
             fontSize2.observe(viewLifecycleOwner, Observer {
-                viewModel.currentValue.value.let {
-                    if (it == null) {
-                        resetDisplay()
-                    } else {
-                        setDisplayNumber(it)
-                    }
-                }
+                updateDisplay()
             })
+        }
+    }
+
+    private fun updateDisplay() {
+        viewModel.currentValue.value.let {
+            if (it == null) resetDisplay()
+            else setDisplay(it)
         }
     }
 
@@ -102,10 +83,10 @@ class NumberDisplayFragment : Fragment() {
         val fragment = NumberFragment()
 
         fragmentToRemove.add(fragment)
-        fragmentTransaction.add(binding.displayContainer.id, fragment).commit()
+        fragmentTransaction.add(numberDisplayBinding.displayContainer.id, fragment).commit()
     }
 
-    private fun setDisplayNumber(value: Int) {
+    private fun setDisplay(value: Int) {
         val numbers = value.toString().map { it.toString().toInt() }
 
         removeAllFragments()
@@ -119,7 +100,7 @@ class NumberDisplayFragment : Fragment() {
             fragment.arguments = args
 
             fragmentToRemove.add(fragment)
-            fragmentTransaction.add(binding.displayContainer.id, fragment).commit()
+            fragmentTransaction.add(numberDisplayBinding.displayContainer.id, fragment).commit()
         }
     }
 

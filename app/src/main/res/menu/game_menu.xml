@@ -6,9 +6,4 @@
         android:icon="@drawable/ic_font_menu"
         android:title="@string/font"
         app:showAsAction="always" />
-    <item
-        android:id="@+id/pallete"
-        android:icon="@drawable/ic_pallete_menu"
-        android:title="@string/colours"
-        app:showAsAction="ifRoom" />
 </menu>
