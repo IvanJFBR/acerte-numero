@@ -21,6 +21,7 @@ import studiosol.acerteonumero.type.FontSizes
 import studiosol.acerteonumero.type.GameStatus
 import studiosol.acerteonumero.ui.fragments.NumberDisplayFragment
 import studiosol.acerteonumero.util.Constants.Companion.CARACTER_LIMIT
+import studiosol.acerteonumero.util.SliderDialog
 import studiosol.acerteonumero.viewModel.GameViewModel
 import java.lang.Integer.parseInt
 
@@ -87,6 +88,10 @@ class GameActivity : AppCompatActivity() {
             }
 
             getGameStatus(it)
+        })
+
+        viewModel.sliderValue.observe(this, {
+            FontSizes.fromInt(it)?.let { fontsize -> setSegmentsSize(fontsize) }
         })
 
 //        viewModel.currentValue.observe(this, Observer {
@@ -157,16 +162,7 @@ class GameActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.font -> {
-                val yourDialog = Dialog(this)
-                val inflater = this.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                val layout: View = inflater.inflate(
-                    R.layout.slider_dialog_layout,
-                    findViewById(R.id.dialog_container)
-                )
-                yourDialog.setContentView(layout)
-                setDialogListeners(layout)
-
-                yourDialog.show()
+                SliderDialog(getSliderValueFromPreferences()).show(supportFragmentManager, "CustomFragment")
                 true
             }
             R.id.pallete -> {
@@ -174,18 +170,6 @@ class GameActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
-    }
-
-    private fun setDialogListeners(view: View) {
-        val slider = view.findViewById<Slider>(R.id.slider)
-        slider.value = getSliderValueFromPreferences().toFloat()
-        slider.addOnSliderTouchListener(object : Slider.OnSliderTouchListener{
-            override fun onStartTrackingTouch(slider: Slider) {}
-
-            override fun onStopTrackingTouch(slider: Slider) {
-                FontSizes.fromInt(slider.value.toInt())?.let { setSegmentsSize(it) }
-            }
-        })
     }
 
     fun setSegmentsSize(fontSize: FontSizes) {

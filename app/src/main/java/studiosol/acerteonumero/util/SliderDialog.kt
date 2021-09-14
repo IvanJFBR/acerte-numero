@@ -7,31 +7,32 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.slider.Slider
 import studiosol.acerteonumero.R
+import studiosol.acerteonumero.databinding.FragmentNumberBinding
+import studiosol.acerteonumero.databinding.FragmentNumberDisplayBinding
+import studiosol.acerteonumero.databinding.SliderDialogLayoutBinding
 import studiosol.acerteonumero.type.FontSizes
 import studiosol.acerteonumero.ui.fragments.NumberFragment
+import studiosol.acerteonumero.viewModel.GameViewModel
 
-private const val ARG_PARAM1 = "sliderValue"
-
-class SliderDialog : DialogFragment() {
-    private var sliderValue: MutableLiveData<Int> = MutableLiveData()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            sliderValue.value = it.getInt(ARG_PARAM1)
-        }
-    }
+class SliderDialog(var sliderValue: Int) : DialogFragment() {
+    private lateinit var viewModel: GameViewModel
+    private lateinit var binding: SliderDialogLayoutBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        dialog!!.window?.setBackgroundDrawableResource(R.drawable.round_corner)
+    ): View {
+        binding = SliderDialogLayoutBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = viewLifecycleOwner
 
-        return inflater.inflate(R.layout.slider_dialog_layout, container, false)
+        dialog!!.window?.setBackgroundDrawableResource(R.drawable.round_corner)
+        createViewModel()
+
+        return binding.root
     }
 
     override fun onStart() {
@@ -39,43 +40,23 @@ class SliderDialog : DialogFragment() {
         val width = (resources.displayMetrics.widthPixels * 0.85).toInt()
         dialog!!.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
 
-        setObservers()
+        setDialogListeners(sliderValue)
     }
 
-    private fun setObservers() {
-        sliderValue.observe(viewLifecycleOwner, {
-            //setDialogListeners()
-        })
+    private fun createViewModel() {
+        this.viewModel = ViewModelProvider(requireActivity()).get(GameViewModel::class.java)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @return A new instance of fragment NumberFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String?) =
-            NumberFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
+    private fun setDialogListeners(value: Int) {
+        binding.apply {
+            slider.value = value.toFloat()
+            slider.addOnSliderTouchListener(object : Slider.OnSliderTouchListener{
+                override fun onStartTrackingTouch(slider: Slider) {}
+
+                override fun onStopTrackingTouch(slider: Slider) {
+                    viewModel.sliderValue.value = slider.value.toInt()
                 }
-            }
+            })
+        }
     }
-
-
-//    private fun setDialogListeners(view: View) {
-//        val slider = view.findViewById<Slider>(R.id.slider)
-//        slider.value = getSliderValueFromPreferences().toFloat()
-//        slider.addOnSliderTouchListener(object : Slider.OnSliderTouchListener{
-//            override fun onStartTrackingTouch(slider: Slider) {}
-//
-//            override fun onStopTrackingTouch(slider: Slider) {
-//                FontSizes.fromInt(slider.value.toInt())?.let { setSegmentsSize(it) }
-//            }
-//        })
-//    }
 }

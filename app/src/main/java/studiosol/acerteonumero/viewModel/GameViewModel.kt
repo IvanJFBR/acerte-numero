@@ -32,6 +32,8 @@ class GameViewModel(val repository: RandomNumberRepository) : ViewModel() {
     var fontSize1 : MutableLiveData<Int> = MutableLiveData()
     var fontSize2 : MutableLiveData<Int> = MutableLiveData()
 
+    var sliderValue: MutableLiveData<Int> = MutableLiveData()
+
     fun getRandomNumber() {
         viewModelScope.launch {
             repository.getRandomNumber().enqueue(object : Callback<RandomNumber> {

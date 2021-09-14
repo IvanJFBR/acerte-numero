@@ -64,7 +64,7 @@ class NumberDisplayFragment : Fragment() {
 
     private fun setObservers() {
         viewModel.currentValue.observe(viewLifecycleOwner, Observer {
-            setDisplayNumber(it.toString())
+            setDisplayNumber(it)
         })
 
         viewModel.randomNumber.observe(viewLifecycleOwner, Observer {
@@ -73,11 +73,23 @@ class NumberDisplayFragment : Fragment() {
 
         viewModel.apply {
             fontSize1.observe(viewLifecycleOwner, Observer {
-                resetDisplay()
+                viewModel.currentValue.value.let {
+                    if (it == null) {
+                        resetDisplay()
+                    } else {
+                        setDisplayNumber(it)
+                    }
+                }
             })
 
             fontSize2.observe(viewLifecycleOwner, Observer {
-                resetDisplay()
+                viewModel.currentValue.value.let {
+                    if (it == null) {
+                        resetDisplay()
+                    } else {
+                        setDisplayNumber(it)
+                    }
+                }
             })
         }
     }
@@ -93,8 +105,8 @@ class NumberDisplayFragment : Fragment() {
         fragmentTransaction.add(binding.displayContainer.id, fragment).commit()
     }
 
-    private fun setDisplayNumber(value: String) {
-        val numbers = value.map { it.toString().toInt() }
+    private fun setDisplayNumber(value: Int) {
+        val numbers = value.toString().map { it.toString().toInt() }
 
         removeAllFragments()
 
