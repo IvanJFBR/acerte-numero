@@ -18,14 +18,14 @@ fun client() =
         })
         .build()
 
-fun gson() : Gson = GsonBuilder().create()
+fun gson(): Gson = GsonBuilder().create()
 
-fun retrofit() : Retrofit =
+fun retrofit(): Retrofit =
     Retrofit.Builder()
         .baseUrl(BASE_URL)
         .client(client())
         .addConverterFactory(GsonConverterFactory.create(gson()))
         .build()
 
-fun services() : ApiService =
+fun services(): ApiService =
     retrofit().create(ApiService::class.java)

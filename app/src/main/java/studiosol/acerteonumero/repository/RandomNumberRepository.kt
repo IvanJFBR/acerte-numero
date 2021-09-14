@@ -12,6 +12,6 @@ import studiosol.acerteonumero.util.Constants.Companion.INITIAL_RANGE
 
 class RandomNumberRepository {
 
-    fun getRandomNumber() : Call<RandomNumber> =
+    fun getRandomNumber(): Call<RandomNumber> =
         services().getRandomNumber()
 }

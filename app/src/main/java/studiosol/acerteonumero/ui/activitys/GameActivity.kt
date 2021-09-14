@@ -83,7 +83,7 @@ class GameActivity : AppCompatActivity() {
         })
 
         viewModel.gameStatus.observe(this, {
-            if (it == GameStatus.Right || it == GameStatus.Error){
+            if (it == GameStatus.Right || it == GameStatus.Error) {
                 disableGame()
             }
 
@@ -153,7 +153,8 @@ class GameActivity : AppCompatActivity() {
     private fun hideKeyboard() {
         binding.etNumberTry.let {
             if (it.hasFocus()) {
-                val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                val inputMethodManager =
+                    getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 inputMethodManager.hideSoftInputFromWindow(it.windowToken, 0)
             }
         }
@@ -162,7 +163,10 @@ class GameActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.font -> {
-                SliderDialog(getSliderValueFromPreferences()).show(supportFragmentManager, "CustomFragment")
+                SliderDialog(getSliderValueFromPreferences()).show(
+                    supportFragmentManager,
+                    "CustomFragment"
+                )
                 true
             }
             R.id.pallete -> {
@@ -174,7 +178,7 @@ class GameActivity : AppCompatActivity() {
 
     fun setSegmentsSize(fontSize: FontSizes) {
         viewModel.apply {
-            when(fontSize) {
+            when (fontSize) {
                 FontSizes.FontSizeStandart -> {
                     fontSize1.postValue(R.dimen.standart_size_first)
                     fontSize2.postValue(R.dimen.standart_size_second)

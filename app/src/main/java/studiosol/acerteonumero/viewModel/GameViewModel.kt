@@ -24,20 +24,23 @@ class GameViewModel(val repository: RandomNumberRepository) : ViewModel() {
         }
     }
 
-    val randomNumber : MutableLiveData<RandomNumber> = MutableLiveData()
-    var gameStatus : MutableLiveData<GameStatus> = MutableLiveData()
+    val randomNumber: MutableLiveData<RandomNumber> = MutableLiveData()
+    var gameStatus: MutableLiveData<GameStatus> = MutableLiveData()
 
-    var currentValue : MutableLiveData<Int> = MutableLiveData()
+    var currentValue: MutableLiveData<Int> = MutableLiveData()
 
-    var fontSize1 : MutableLiveData<Int> = MutableLiveData()
-    var fontSize2 : MutableLiveData<Int> = MutableLiveData()
+    var fontSize1: MutableLiveData<Int> = MutableLiveData()
+    var fontSize2: MutableLiveData<Int> = MutableLiveData()
 
     var sliderValue: MutableLiveData<Int> = MutableLiveData()
 
     fun getRandomNumber() {
         viewModelScope.launch {
             repository.getRandomNumber().enqueue(object : Callback<RandomNumber> {
-                override fun onResponse(call: Call<RandomNumber>, response: Response<RandomNumber>) {
+                override fun onResponse(
+                    call: Call<RandomNumber>,
+                    response: Response<RandomNumber>
+                ) {
                     if (response.isSuccessful) {
                         randomNumber.postValue(response.body())
                     } else {

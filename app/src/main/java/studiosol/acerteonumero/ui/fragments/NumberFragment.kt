@@ -102,97 +102,97 @@ class NumberFragment : Fragment() {
     }
 
     private fun setNumber(number: Int?) {
-        when(number) {
+        when (number) {
             0 -> binding.apply {
-                    segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentUpperLeft.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentMiddle.background = setBackground(R.drawable.segment_display_gray)
-                    segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentBottomLeft.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
-                }
+                segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentUpperLeft.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentMiddle.background = setBackground(R.drawable.segment_display_gray)
+                segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentBottomLeft.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
+            }
             1 -> binding.apply {
-                    segmentUpper.background = setBackground(R.drawable.segment_display_gray)
-                    segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentUpperLeft.background = setBackground(R.drawable.segment_display_gray)
-                    segmentMiddle.background = setBackground(R.drawable.segment_display_gray)
-                    segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentBottomLeft.background = setBackground(R.drawable.segment_display_gray)
-                    segmentBottom.background = setBackground(R.drawable.segment_display_gray)
-                }
+                segmentUpper.background = setBackground(R.drawable.segment_display_gray)
+                segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentUpperLeft.background = setBackground(R.drawable.segment_display_gray)
+                segmentMiddle.background = setBackground(R.drawable.segment_display_gray)
+                segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentBottomLeft.background = setBackground(R.drawable.segment_display_gray)
+                segmentBottom.background = setBackground(R.drawable.segment_display_gray)
+            }
             2 -> binding.apply {
-                    segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentUpperLeft.background = setBackground(R.drawable.segment_display_gray)
-                    segmentMiddle.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentBottomRight.background = setBackground(R.drawable.segment_display_gray)
-                    segmentBottomLeft.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
-                }
+                segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentUpperLeft.background = setBackground(R.drawable.segment_display_gray)
+                segmentMiddle.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentBottomRight.background = setBackground(R.drawable.segment_display_gray)
+                segmentBottomLeft.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
+            }
             3 -> binding.apply {
-                    segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentUpperLeft.background = setBackground(R.drawable.segment_display_gray)
-                    segmentMiddle.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentBottomLeft.background = setBackground(R.drawable.segment_display_gray)
-                    segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
-                }
+                segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentUpperLeft.background = setBackground(R.drawable.segment_display_gray)
+                segmentMiddle.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentBottomLeft.background = setBackground(R.drawable.segment_display_gray)
+                segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
+            }
             4 -> binding.apply {
-                    segmentUpper.background = setBackground(R.drawable.segment_display_gray)
-                    segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentUpperLeft.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentMiddle.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentBottomLeft.background = setBackground(R.drawable.segment_display_gray)
-                    segmentBottom.background = setBackground(R.drawable.segment_display_gray)
-                }
+                segmentUpper.background = setBackground(R.drawable.segment_display_gray)
+                segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentUpperLeft.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentMiddle.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentBottomLeft.background = setBackground(R.drawable.segment_display_gray)
+                segmentBottom.background = setBackground(R.drawable.segment_display_gray)
+            }
             5 -> binding.apply {
-                    segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentUpperRight.background = setBackground(R.drawable.segment_display_gray)
-                    segmentUpperLeft.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentMiddle.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentBottomLeft.background = setBackground(R.drawable.segment_display_gray)
-                    segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
-                }
+                segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentUpperRight.background = setBackground(R.drawable.segment_display_gray)
+                segmentUpperLeft.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentMiddle.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentBottomLeft.background = setBackground(R.drawable.segment_display_gray)
+                segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
+            }
             6 -> binding.apply {
-                    segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentUpperRight.background = setBackground(R.drawable.segment_display_gray)
-                    segmentUpperLeft.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentMiddle.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentBottomLeft.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
-                }
+                segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentUpperRight.background = setBackground(R.drawable.segment_display_gray)
+                segmentUpperLeft.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentMiddle.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentBottomLeft.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
+            }
             7 -> binding.apply {
-                    segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentUpperLeft.background = setBackground(R.drawable.segment_display_gray)
-                    segmentMiddle.background = setBackground(R.drawable.segment_display_gray)
-                    segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentBottomLeft.background = setBackground(R.drawable.segment_display_gray)
-                    segmentBottom.background = setBackground(R.drawable.segment_display_gray)
-                }
+                segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentUpperLeft.background = setBackground(R.drawable.segment_display_gray)
+                segmentMiddle.background = setBackground(R.drawable.segment_display_gray)
+                segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentBottomLeft.background = setBackground(R.drawable.segment_display_gray)
+                segmentBottom.background = setBackground(R.drawable.segment_display_gray)
+            }
             8 -> binding.apply {
-                    segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentUpperLeft.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentMiddle.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentBottomLeft.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
-                }
+                segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentUpperLeft.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentMiddle.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentBottomLeft.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
+            }
             9 -> binding.apply {
-                    segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentUpperLeft.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentMiddle.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
-                    segmentBottomLeft.background = setBackground(R.drawable.segment_display_gray)
-                    segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
-                }
+                segmentUpper.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentUpperRight.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentUpperLeft.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentMiddle.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentBottomRight.background = setBackground(R.drawable.segment_display_colorfull)
+                segmentBottomLeft.background = setBackground(R.drawable.segment_display_gray)
+                segmentBottom.background = setBackground(R.drawable.segment_display_colorfull)
+            }
             else -> binding.apply {
                 segmentUpper.background = setBackground(R.drawable.segment_display_gray)
                 segmentUpperRight.background = setBackground(R.drawable.segment_display_gray)
@@ -205,7 +205,7 @@ class NumberFragment : Fragment() {
         }
     }
 
-    private fun setBackground(drawableResource: Int) : Drawable? {
+    private fun setBackground(drawableResource: Int): Drawable? {
         return ContextCompat.getDrawable(requireContext(), drawableResource)
     }
 }

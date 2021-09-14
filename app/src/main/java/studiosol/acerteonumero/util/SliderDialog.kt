@@ -50,7 +50,7 @@ class SliderDialog(var sliderValue: Int) : DialogFragment() {
     private fun setDialogListeners(value: Int) {
         binding.apply {
             slider.value = value.toFloat()
-            slider.addOnSliderTouchListener(object : Slider.OnSliderTouchListener{
+            slider.addOnSliderTouchListener(object : Slider.OnSliderTouchListener {
                 override fun onStartTrackingTouch(slider: Slider) {}
 
                 override fun onStopTrackingTouch(slider: Slider) {

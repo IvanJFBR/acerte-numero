@@ -63,11 +63,11 @@ class NumberDisplayFragment : Fragment() {
     }
 
     private fun setObservers() {
-        viewModel.currentValue.observe(viewLifecycleOwner, Observer {
+        viewModel.currentValue.observe(viewLifecycleOwner, {
             setDisplayNumber(it)
         })
 
-        viewModel.randomNumber.observe(viewLifecycleOwner, Observer {
+        viewModel.randomNumber.observe(viewLifecycleOwner, {
             resetDisplay()
         })
 

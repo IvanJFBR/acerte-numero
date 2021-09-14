@@ -6,5 +6,5 @@ import studiosol.acerteonumero.model.RandomNumber
 
 interface ApiService {
     @GET("/rand?min=1&max=300")
-    fun getRandomNumber() : Call<RandomNumber>
+    fun getRandomNumber(): Call<RandomNumber>
 }
