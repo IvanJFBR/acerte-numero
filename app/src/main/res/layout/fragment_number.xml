@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="studiosol.acerteonumero.viewModel.GameViewModel" />
+            type="com.ivstech.acerteonumero.viewModel.GameViewModel" />
 
         <variable
             name="size1"
