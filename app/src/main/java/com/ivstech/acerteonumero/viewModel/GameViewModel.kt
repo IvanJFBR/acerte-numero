@@ -20,7 +20,7 @@ class GameViewModel(val repository: RandomNumberRepository) : ViewModel() {
         }
     }
 
-    val randomNumber: MutableLiveData<RandomNumber> = MutableLiveData()
+    val randomNumber: MutableLiveData<Int> = MutableLiveData()
     var gameStatus: MutableLiveData<GameStatus> = MutableLiveData()
 
     var currentValue: MutableLiveData<Int> = MutableLiveData()
@@ -34,32 +34,14 @@ class GameViewModel(val repository: RandomNumberRepository) : ViewModel() {
     var sliderValue: MutableLiveData<Int> = MutableLiveData()
 
     fun getRandomNumber() {
-        viewModelScope.launch {
-            repository.getRandomNumber().enqueue(object : Callback<RandomNumber> {
-                override fun onResponse(
-                    call: Call<RandomNumber>,
-                    response: Response<RandomNumber>
-                ) {
-                    if (response.isSuccessful) {
-                        randomNumber.postValue(response.body())
-                    } else {
-                        currentValue.postValue(response.raw().code)
-                        gameStatus.postValue(GameStatus.Error)
-                    }
-                }
-
-                override fun onFailure(call: Call<RandomNumber>, t: Throwable) {
-                    gameStatus.postValue(GameStatus.Error)
-                }
-            })
-        }
+        randomNumber.postValue(28)
     }
 
     fun playGame(number: Int) {
-        randomNumber.value?.let {
+        randomNumber.value?.let { randomNumber ->
             gameStatus.value = when {
-                number > it.number -> GameStatus.Lower
-                number < it.number -> GameStatus.Higher
+                number > randomNumber -> GameStatus.Lower
+                number < randomNumber -> GameStatus.Higher
                 else -> GameStatus.RightAnswer
             }
 
